@@ -22,33 +22,38 @@ typedef struct COORDINATE{
 	char name[30];
 }coordinate;
 
-void PublishJointMassages(Joint* joints){
-	static char jointNameList[JointType_Count][30] = {
-		"torso",//SpineBase
-		"chest",//SpineMid
-		"neck",//Neck
-		"head",//Head
-		"left_shoulder",//ShoulderLeft
-		"left_elbow",//ElbowLeft
-		"left_hand",//WristLeft
-		"left_hand1",//HandLeft
-		"right_shoulder",//ShoulderRight
-		"right_elbow",//ElbowRight
-		"right_hand",//WristRight
-		"right_hand1",//HandRight
-		"left_hip",//HipLeft
-		"left_knee",//KneeLeft
-		"left_foot",//AnkleLeft
-		"left_foot1",//FootLeft
-		"right_hip",//HipRight
-		"right_knee",//KneeRight
-		"right_foot",//AnkleRight
-		"right_foot1",//FootRight
-		"chest2",//SpineShoulder
-		"left_hand2",//HandTipLeft
-		"left_hand3",//ThumbLeft
-		"right_hand2",//HandTipRight
-		"right_hand3"//ThumbRight
+typedef struct JOINTINFO{
+	char jointName[30];
+	int indexOffset;
+}JointInfo;
+
+void PublishJointMassages(Joint* joints, JointOrientation* jointOrientations){
+	static JointInfo jointInfoList[JointType_Count] = {
+		{ "torso", 0 },//SpineBase 0
+		{ "chest", 0 },//SpineMid 1
+		{ "neck" , 0 },//Neck 2
+		{ "head" , 0 },//Head 3
+		{ "left_shoulder", 1 },//ShoulderLeft 4
+		{ "left_elbow", 1 },//ElbowLeft 5
+		{ "left_hand", 1 },//WristLeft 6
+		{ "left_hand1", 0 },//HandLeft 7
+		{ "right_shoulder", 1 },//ShoulderRight 8
+		{ "right_elbow", 1 },//ElbowRight 9
+		{  "right_hand", 1 },//WristRight 10
+		{ "right_hand1", 0 },//HandRight 11
+		{ "left_hip", 1 },//HipLeft 12
+		{ "left_knee", 1 },//KneeLeft 13
+		{ "left_foot", 0 },//AnkleLeft 14
+		{ "left_foot1", 0 },//FootLeft 15
+		{ "right_hip", 1 },//HipRight 16
+		{ "right_knee", 1 },//KneeRight 17
+		{ "right_foot", 0 },//AnkleRight 18
+		{ "right_foot1", 0 },//FootRight 19
+		{ "chest2", 0 },//SpineShoulder 20
+		{ "left_hand2", 0 },//HandTipLeft 21
+		{ "left_hand3", 0 },//ThumbLeft 22
+		{ "right_hand2", 0 },//HandTipRight 23
+		{ "right_hand3", 0 }//ThumbRight 24
 	};
 
 	// 0MQÇÃèâä˙âª
@@ -98,9 +103,7 @@ void PublishJointMassages(Joint* joints){
 				coord1.q.w = 1;
 			}
 
-			//strcpy(coord1.name, "/");
-			//strcat(coord1.name, jointNameList[j]);
-			strcpy(coord1.name, jointNameList[j]);
+			strcpy(coord1.name, jointInfoList[j].jointName);
 			strcat(coord1.name, "_0");
 
 			// msg
