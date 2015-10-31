@@ -7,10 +7,18 @@ struct POINT3D{
 };
 typedef POINT3D point;
 
+typedef struct ORIENT{
+	double x;
+	double y;
+	double z;
+	double w;
+}orient;
+
 typedef struct COORDINATE{
 	int id;
 	time_t timeStamp;
 	point p;
+	orient q;
 	char name[30];
 }coordinate;
 
@@ -62,22 +70,32 @@ void PublishJointMassages(Joint* joints){
 		for (int j = 0; j < JointType_Count; ++j)
 		//for (int j = 0; j < 3; ++j)
 		{
-			if (joints[j].TrackingState == TrackingState_Inferred)
+			if (joints[j].TrackingState != TrackingState_NotTracked)
 			{
 				coord1.p.x = joints[j].Position.X;
 				coord1.p.y = joints[j].Position.Y;
 				coord1.p.z = joints[j].Position.Z;
-			}
-			else if (joints[j].TrackingState == TrackingState_Tracked)
-			{
-				coord1.p.x = joints[j].Position.X;
-				coord1.p.y = joints[j].Position.Y;
-				coord1.p.z = joints[j].Position.Z;
+				Vector4 q = jointOrientations[ j+jointInfoList[j].indexOffset ].Orientation;
+				if (q.w != 0){
+					coord1.q.x = q.x;
+					coord1.q.y = q.y;
+					coord1.q.z = q.z;
+					coord1.q.w = q.w;
+				}else{
+					coord1.q.x = 1;
+					coord1.q.y = 0;
+					coord1.q.z = 0;
+					coord1.q.w = 1;
+				}
 			}
 			else{
 				coord1.p.x = 0;
 				coord1.p.y = 0;
 				coord1.p.z = 0;
+				coord1.q.x = 1;
+				coord1.q.y = 0;
+				coord1.q.z = 0;
+				coord1.q.w = 1;
 			}
 
 			//strcpy(coord1.name, "/");

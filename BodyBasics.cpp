@@ -353,10 +353,15 @@ void CBodyBasics::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
                         pBody->get_HandRightState(&rightHandState);
 
                         hr = pBody->GetJoints(_countof(joints), joints);
+
+						//add for orientation
+						JointOrientation jointOrientations[JointType_Count];
+						hr &= pBody->GetJointOrientations(_countof(joints), jointOrientations);
+						
                         if (SUCCEEDED(hr))
                         {
 							//add for zmq
-							PublishJointMassages(joints);
+							PublishJointMassages(joints, jointOrientations);
 
 							for (int j = 0; j < _countof(joints); ++j)
                             {
