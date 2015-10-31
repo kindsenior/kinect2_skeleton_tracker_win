@@ -68,12 +68,8 @@ void PublishJointMassages(Joint* joints, JointOrientation* jointOrientations){
 
 	static int loopNum = 1;
 	for (int i = 0; i < loopNum; ++i){
-		//zmq_msg_t msg;
-		//zmq_msg_send(&msg, "hoge", 0);
-
 
 		for (int j = 0; j < JointType_Count; ++j)
-		//for (int j = 0; j < 3; ++j)
 		{
 			if (joints[j].TrackingState != TrackingState_NotTracked)
 			{
@@ -111,7 +107,6 @@ void PublishJointMassages(Joint* joints, JointOrientation* jointOrientations){
 			zmq_msg_init_size(&msg, sizeof(coord1));
 			memcpy(zmq_msg_data(&msg), &coord1, sizeof(coord1));
 			if ( j == JointType_Count - 1 ){
-			//if ( j == 3-1 ){
 				zmq_msg_send(&msg, publisher, ZMQ_DONTWAIT);
 			}
 			else
