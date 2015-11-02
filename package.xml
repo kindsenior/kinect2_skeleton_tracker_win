@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>kinect2_skeleton_tracker</name>
+  <name>kinect2_skeleton_tracker_win</name>
   <version>0.0.0</version>
   <description>The iiiexhibition package</description>
 
