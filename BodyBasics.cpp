@@ -320,6 +320,8 @@ HRESULT CBodyBasics::InitializeDefaultSensor()
 /// </summary>
 void CBodyBasics::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 {
+	bool sendFlg = false;
+
     if (m_hWnd)
     {
         HRESULT hr = EnsureDirect2DResources();
@@ -342,8 +344,8 @@ void CBodyBasics::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
                     BOOLEAN bTracked = false;
                     hr = pBody->get_IsTracked(&bTracked);
 
-                    if (SUCCEEDED(hr) && bTracked)
-                    {
+                    if (SUCCEEDED(hr) && bTracked && !sendFlg)
+					{
                         Joint joints[JointType_Count]; 
                         D2D1_POINT_2F jointPoints[JointType_Count];
                         HandState leftHandState = HandState_Unknown;
@@ -357,9 +359,15 @@ void CBodyBasics::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 						//add for orientation
 						JointOrientation jointOrientations[JointType_Count];
 						hr &= pBody->GetJointOrientations(_countof(joints), jointOrientations);
-						
+
                         if (SUCCEEDED(hr))
                         {
+							//for distance limitation
+							if ( joints[0].Position.Z * joints[0].Position.Z + joints[0].Position.X * joints[0].Position.X > 9 ){
+								continue;
+							}
+							sendFlg = true;
+
 							//add for zmq
 							PublishJointMassages(joints, jointOrientations);
 
