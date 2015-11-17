@@ -33,27 +33,27 @@ void PublishJointMassages(Joint* joints, JointOrientation* jointOrientations){
 		{ "chest", 0 },//SpineMid 1
 		{ "neck" , 0 },//Neck 2
 		{ "head" , 0 },//Head 3
-		{ "left_shoulder", 1 },//ShoulderLeft 4
-		{ "left_elbow", 1 },//ElbowLeft 5
-		{ "left_hand", 1 },//WristLeft 6
-		{ "left_hand1", 0 },//HandLeft 7
-		{ "right_shoulder", 1 },//ShoulderRight 8
-		{ "right_elbow", 1 },//ElbowRight 9
-		{  "right_hand", 1 },//WristRight 10
-		{ "right_hand1", 0 },//HandRight 11
-		{ "left_hip", 1 },//HipLeft 12
-		{ "left_knee", 1 },//KneeLeft 13
-		{ "left_foot", 0 },//AnkleLeft 14
-		{ "left_foot1", 0 },//FootLeft 15
-		{ "right_hip", 1 },//HipRight 16
-		{ "right_knee", 1 },//KneeRight 17
-		{ "right_foot", 0 },//AnkleRight 18
-		{ "right_foot1", 0 },//FootRight 19
+		{ "right_shoulder", 1 },//ShoulderLeft 4
+		{ "right_elbow", 1 },//ElbowLeft 5
+		{ "right_hand", 1 },//WristLeft 6
+		{ "right_hand1", 0 },//HandLeft 7
+		{ "left_shoulder", 1 },//ShoulderRight 8
+		{ "left_elbow", 1 },//ElbowRight 9
+		{  "left_hand", 1 },//WristRight 10
+		{ "left_hand1", 0 },//HandRight 11
+		{ "right_hip", 1 },//HipLeft 12
+		{ "right_knee", 1 },//KneeLeft 13
+		{ "right_foot", 0 },//AnkleLeft 14
+		{ "right_foot1", 0 },//FootLeft 15
+		{ "left_hip", 1 },//HipRight 16
+		{ "left_knee", 1 },//KneeRight 17
+		{ "left_foot", 0 },//AnkleRight 18
+		{ "left_foot1", 0 },//FootRight 19
 		{ "chest2", 0 },//SpineShoulder 20
-		{ "left_hand2", 0 },//HandTipLeft 21
-		{ "left_hand3", 0 },//ThumbLeft 22
-		{ "right_hand2", 0 },//HandTipRight 23
-		{ "right_hand3", 0 }//ThumbRight 24
+		{ "right_hand2", 0 },//HandTipLeft 21
+		{ "right_hand3", 0 },//ThumbLeft 22
+		{ "left_hand2", 0 },//HandTipRight 23
+		{ "left_hand3", 0 }//ThumbRight 24
 	};
 
 	// 0MQÇÃèâä˙âª
