@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>kinect2_skeleton_tracker_win</name>
+  <version>0.0.0</version>
+  <description>The iiiexhibition package</description>
+
+  <maintainer email="k-kojima@jsk.imi.i.u-tokyo.ac.jp">k-kojima</maintainer>
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+  <author>Kunio Kojima</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+  </export>
+</package>
